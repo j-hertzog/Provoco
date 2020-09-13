@@ -6,13 +6,14 @@ export default class DigitalClock extends Component {
     constructor() {
         super();
         this.state = {currentTime: null}
+        return;
     }
 
-    getCurrentTime = () => {
+    getCurrentTime = (): void => {
         let hour: number = new Date().getHours();
         let minutes: number = new Date().getMinutes();
         let seconds: number = new Date().getSeconds();
-        let am_pm: string = 'pm';
+        let am_pm = 'pm';
 
         if(hour > 12) 
             hour = hour-12;
@@ -29,21 +30,24 @@ export default class DigitalClock extends Component {
             seconds = '0' + seconds;
 
         this.setState({currentTime: hour + ':' + minutes + ':' + seconds + ' ' + am_pm});
+        return;
     }
 
-    componentDidMount() {
+    componentDidMount(): void {
         //setInterval waits a second before starting
         this.getCurrentTime();
         this.timer = setInterval(() => {
             this.getCurrentTime();
         }, 1000);
+        return;
     }
 
-    componentWillUnmount() {
+    componentWillUnmount(): void {
         clearInterval(this.timer);
+        return;
     }
 
-    render = () => {
+    render = (): void => {
         return ( 
             <View style={styles.container}>
                 <Text style = {styles.clockTitle}> CLOCK </Text>
