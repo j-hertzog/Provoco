@@ -1,4 +1,4 @@
-## Provoco
+## Provoc:sunny:
 An alarm app for iOS and Android that donates your money to charity if you fail complete a warm up challenge in an alloted amount of time after the alarm goes off.
 
 ## Motivation 
