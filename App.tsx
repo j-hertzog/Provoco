@@ -64,7 +64,7 @@ export default class LandingPage extends Component {
                 <Text style = {styles.clockInfo}> {this.state.currentTime} </Text>
                 <Text style = {styles.dateInfo}> {this.state.currentDay} </Text>
                 <View style = {styles.mainTimer}> 
-                    <Text style = {styles.timerStatus}> No Timers Set </Text>
+                    <Text style = {styles.timerStatus}> No Alarms Set </Text>
                 </View>
 
                 <View style = {styles.buttonWrapper}>
