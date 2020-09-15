@@ -2,7 +2,7 @@
 An alarm app for iOS and Android that donates your money to charity if you fail complete a warm up challenge in an alloted amount of time after the alarm goes off.
 
 <div>
-<img src = "https://raw.githubusercontent.com/j-hertzog/Provoco/master/img/provoco.png" width = "210" height = "375" align="right">
+<img src = "https://raw.githubusercontent.com/j-hertzog/Provoco/master/img/main.provoco.png" width = "210" height = "375" align="right">
 </div>
 
 ## Motivation 
