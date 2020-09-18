@@ -1,85 +1,43 @@
+import 'react-native-gesture-handler';
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Button, Image} from 'react-native';
-import styles from './main.style.tsx';
+import { Clipboard } from 'react-native'
+import LandingPage from './LandingPage.tsx';
+import AlarmPage from './AlarmPage.tsx';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default class LandingPage extends Component {
-    
-    constructor() {
-        super();
-        this.state = {currentTime: null, currentDay: null}
-        this.dayArray = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-        this.monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December',];
-        return;
-    }
+const Stack = createStackNavigator();
 
-    getCurrentTime = (): void => {
-        let hour: number = new Date().getHours();
-        let minutes: number = new Date().getMinutes();
-        let seconds: number = new Date().getSeconds();
-        let weekDay: string = this.dayArray[new Date().getDay()];
-        let month: string = this.monthArray[new Date().getMonth()];
-        let date: string = new Date().getDate();
-        let am_pm = 'pm';
+const App = () => {
+  return (
+    <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+            <Stack.Screen 
+                name = "Home"
+                component = {LandingPage}
+                options = {{
+                    headerShown: false,
+                }}
+            />
+            <Stack.Screen
+                name = "Alarms"
+                component = {AlarmPage}
+                options = {{
+                    headerStyle: {
+                        backgroundColor: '#282a36',
+                        height: 60,
+                    },
+                    headerTintColor: '#bd93f9',
+                }}
+            />
+        </Stack.Navigator> 
+    </NavigationContainer>
+  );
+};
 
-        if(hour > 12) 
-            hour = hour-12;
-        else
-            am_pm = 'am';
-
-        if(hour == 0) 
-            hour = 12;
-
-        if(minutes/10 < 1) 
-            minutes = '0' + minutes;
-
-        if(seconds/10 < 1) 
-            seconds = '0' + seconds;
-
-        this.setState({currentTime: hour + ':' + minutes + ':' + seconds + ' ' + am_pm, currentDay: weekDay + ', ' + month + ' ' + date});
-        return;
-    }
-
-    componentDidMount(): void {
-        //setInterval waits a second before starting
-        this.getCurrentTime();
-        this.timer = setInterval(() => {
-            this.getCurrentTime();
-        }, 1000);
-        return;
-    }
-
-    componentWillUnmount(): void {
-        clearInterval(this.timer);
-        return;
-    }
-
-    render = (): void => {
-        return ( 
-            <View style={styles.container}>
-            <View style = {{flexDirection: 'row', justifyContent: 'center'}}>
-                <Text style = {styles.clockTitle}> Provoc 
-                    <Image source={require('./sun_icon.png')} style = {{ width: 65, height: 60,}} />
-                </Text>
-            </View>
-                <Text style = {styles.clockInfo}> {this.state.currentTime} </Text>
-                <Text style = {styles.dateInfo}> {this.state.currentDay} </Text>
-                <View style = {styles.mainTimer}> 
-                    <Text style = {styles.timerStatus}> No Alarms Set </Text>
-                </View>
-
-                <View style = {styles.buttonWrapper}>
-                    <Button title = "Create Alarm" color="white"></Button>
-                </View>
-                <View style = {styles.buttonWrapper}>
-                    <Button title = "Leaderboard" color="white"></Button>
-                </View>
-                <View style = {styles.buttonWrapper}>
-                    <Button title = "My Profile" color="white"></Button>
-                </View>
-                <View>
-                    <Text style = {styles.balance}>Current Balance: $0.00</Text>
-                </View>
-            </View>
-        )
-    }
+export default App;
+// HACK: Prevent "Expo pasted from CoreSimulator" notification from spamming continuously (caused by iOS14) will be resolved in SDK 39
+if (__DEV__) {
+  Clipboard.setString('')
 }
+
