@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Button, Image} from 'react-native';
-import styles from './main.style.tsx';
+import { Text, View, Button } from 'react-native';
+import styles from './main.style';
 
 export default class AlarmPage extends Component {
     constructor() {
+        //@ts-ignore
         super();
     }
 
@@ -23,7 +24,9 @@ export default class AlarmPage extends Component {
                     color: '#bd93f9',
                     paddingBottom: 30,
                     shadowOpacity: 0.5,
-                    }}> EXAMPLE </Text>
+		}}> EXAMPLE 
+		</Text>
+		    <Button title = "Set"></Button>
             </View>
         )
     }

@@ -32,13 +32,14 @@ export default StyleSheet.create({
     marginBottom: 20,
   },
   buttonWrapper: {
-    flex: 0.13,
-    width: '65%',
+    flex: 0.09,
+    width: '55%',
     marginTop: 15,
     backgroundColor: '#44475a',
     borderRadius: 15,
     borderWidth: 1,
     borderColor: 'gray',
+    justifyContent: 'center',
     overflow: 'hidden',
   },
   mainTimer: {
