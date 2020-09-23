@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import { Text, View, Button, Image } from 'react-native';
 import styles from './main.style';
 
-export default class LandingPage extends Component {
+export interface State {
+    currentTime: String,
+    currentDay: String,
+}
+
+export default class LandingPage extends Component<{}, State> {
     
     dayArray: Array<String>;
     monthArray: Array<String>;
@@ -11,7 +16,12 @@ export default class LandingPage extends Component {
     constructor() {
         //@ts-ignore
         super(); 
-        this.state = {currentTime: null, currentDay: null};
+
+        //initializing state
+        this.state = {
+            currentTime: "",
+            currentDay: "",
+        };
         this.dayArray = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
         this.monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December',];
         this.timer = 0;
@@ -19,9 +29,14 @@ export default class LandingPage extends Component {
     }
 
     getCurrentTime = (): void => {
+        //current time data
         let hour: number = new Date().getHours();
         let minutes: number = new Date().getMinutes();
         let seconds: number = new Date().getSeconds();
+        let mText: String = minutes.toString();
+        let sText: String = seconds.toString();
+
+        //current day data
         let weekDay: String = this.dayArray[new Date().getDay()];
         let month: String = this.monthArray[new Date().getMonth()];
         let date: Number = new Date().getDate();
@@ -36,12 +51,12 @@ export default class LandingPage extends Component {
             hour = 12;
 
         if(minutes/10 < 1) 
-            minutes = '0' + minutes;
+            mText = '0' + minutes;
 
         if(seconds/10 < 1) 
-            seconds = '0' + seconds;
+            sText = '0' + seconds;
 
-        this.setState({currentTime: hour + ':' + minutes + ':' + seconds + ' ' + am_pm, currentDay: weekDay + ', ' + month + ' ' + date});
+        this.setState({currentTime: hour + ':' + mText + ':' + sText + ' ' + am_pm, currentDay: weekDay + ', ' + month + ' ' + date});
         return;
     }
 
@@ -59,7 +74,7 @@ export default class LandingPage extends Component {
         return;
     }
     onCreatePressed = (): void => {
-        this.props.navigation.navigate('Alarms');
+        this.props.navigation.navigate('Alarms', {});
     }
 
     render = () => {
@@ -75,7 +90,7 @@ export default class LandingPage extends Component {
             </View>
                 <Text style = {styles.dateInfo}> {this.state.currentDay} </Text>
                 <View style = {styles.mainTimer}> 
-                    <Text style = {styles.timerStatus}> No Alarms Set </Text>
+                    <Text style = {styles.timerStatus}>  </Text>
                 </View>
 
                 <View style = {styles.buttonWrapper}>
