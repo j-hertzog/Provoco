@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import LandingPage from './LandingPage';
-import AlarmPage from './AlarmPage';
+import LandingPage from './src/LandingPage';
+import AlarmPage from './src/AlarmPage';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 

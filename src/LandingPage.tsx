@@ -82,7 +82,7 @@ export default class LandingPage extends Component<{}, State> {
             <View style={styles.container}>
             <View style = {{flexDirection: 'row', justifyContent: 'center'}}>
                 <Text style = {styles.clockTitle}> Provoc 
-                    <Image source={require('./sun_icon.png')} style = {{ width: 65, height: 60,}} />
+                    <Image source={require('../img/sun_icon.png')} style = {{ width: 65, height: 60,}} />
                 </Text>
             </View>
             <View>
