@@ -6,6 +6,7 @@ export default StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: '#282a36',
     alignItems: 'center',
+    justifyContent: 'space-between',
     paddingTop: 60, 
   },
   clockTitle: {
@@ -44,8 +45,9 @@ export default StyleSheet.create({
   },
   mainTimer: {
     flex: 0.55,
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
+    flexDirection: 'column',
     width: '75%',
     marginTop: 35,
     margin: 10,
@@ -55,13 +57,28 @@ export default StyleSheet.create({
     backgroundColor: '#44475a',
   },
   timerStatus: {
-    fontSize: 28,
-    color: '#ff79c6',
+    flex: 1,
+    textAlign: 'center',
+    fontSize: 35,
+    letterSpacing: 4,
+    color: '#f1fa8c',
     fontWeight: '300',
   },
   balance: {
     paddingTop: 20,
     fontSize: 15,
     color: 'white',
-  }
+  },
+  alarmName: {
+    flex: 1,
+    textAlign: 'center',
+    fontSize: 42,
+    color: '#ff5555',
+  },
+  alarmDetails: {
+    flex: 1,
+    textAlign: 'center',
+    fontSize: 18,
+    color: '#ff5555',
+  },
 });
