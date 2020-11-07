@@ -69,7 +69,7 @@ export default class LandingPage extends Component<{}, State> {
         if(seconds/10 < 1) 
             sText = '0' + seconds;
 
-        this.setState({currentTime: hour + ':' + mText + ':' + sText + ' ' + am_pm, 
+        this.setState({currentTime: hour + ':' + mText + am_pm, 
                        currentDay: weekDay + ', ' + month + ' ' + date});
         return;
     }
@@ -100,7 +100,7 @@ export default class LandingPage extends Component<{}, State> {
             'details': 'this a test alarm... lorem ipsum latin latin latin latin latin latin latin latin latin',
             'second' : 0,
             'minute' : 30,
-            'hour' : 9 ,
+            'hour' : 9, //out of 24
             'day' : 4,
             'month' : 9, //october, starts indexing at 0
             'year' : 2020,
@@ -108,11 +108,14 @@ export default class LandingPage extends Component<{}, State> {
 
         this.currAlarm = new Alarm(example);
 
-        this.setState({nextAlarm: this.currAlarm.countDown(example), 
-            alarmName: example['name'] , alarmDetails: example['details']});
+        //const ap: string = example['hour']
+        if(example.hour > 12) example.hour -= 12;
+
+        this.setState({nextAlarm: `${example.hour}:${example.minute}`, 
+            alarmName: example.name , alarmDetails: example.details});
 
         this.alarmTimer = setInterval(() => {
-            this.setState({nextAlarm: this.currAlarm.countDown(example)});
+            //this.setState({nextAlarm: this.currAlarm.countDown(example)});
             console.log(this.state.nextAlarm);
         }, 1000);
         console.log(this.alarmTimer);
@@ -138,6 +141,12 @@ export default class LandingPage extends Component<{}, State> {
                     <Text style = {styles.alarmName}>{this.state.alarmName}  </Text>
                     <Text style = {styles.timerStatus}>{this.state.nextAlarm}  </Text>
                     <Text style = {styles.alarmDetails}>{this.state.alarmDetails}  </Text>
+
+                    <View style = {styles.alarmTab}>
+                        <View style = {styles.alarmTabButtons}><Button title = '<' color = "white" onPress={()=>{}}/></View>
+                        <View style = {{flex: 0.94}}/>
+                        <View style = {styles.alarmTabButtons}><Button title = '>' color = "white" onPress={()=>{}}/></View>
+                    </View>
                 </View>
                 <View style = {styles.buttonWrapper}>
                     <Button title = "Create Alarm" color="white" onPress={()=> this.onCreatePressed() }/>

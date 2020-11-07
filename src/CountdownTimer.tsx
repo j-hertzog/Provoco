@@ -27,20 +27,19 @@ export default class Alarm{
     countDown(data: alarmData): String{
         if(!data) return '00:00:00';
 
-        var response: String = 'ree';
+        const response: String = 'ree';
 
         //end time in UTC
-        const endTime:number = Date.UTC(data['year'], data['month'], data['day'], data['hour'], 
-                                        data['minute'], data['second'], 0);
+        const endTime:number = Date.UTC(data.year, data.month, data.day, data.hour, data.minute, data.second, 0);
 
         const raw = endTime - Date.now();
         if(raw < 0) 
             return "invalid date";
 
-        var seconds: string = Math.floor((raw % (1000 * 60)) / 1000).toString();
-        var minutes: string = Math.floor((raw % (1000 * 60 * 60)) / (1000 * 60)).toString();
-        var days: string = Math.floor(raw / (1000 * 60 * 60 * 24)).toString();
-        var hours: string = Math.floor((raw % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString();
+        let seconds: string = Math.floor((raw % (1000 * 60)) / 1000).toString();
+        let minutes: string = Math.floor((raw % (1000 * 60 * 60)) / (1000 * 60)).toString();
+        let days: string = Math.floor(raw / (1000 * 60 * 60 * 24)).toString();
+        let hours: string = Math.floor((raw % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString();
 
         //nice formatting
         if(seconds.length == 1)
