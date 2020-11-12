@@ -26,8 +26,8 @@ export default class LandingPage extends Component<{}, State> {
         this.state = {
             currentTime: "",
             currentDay: "",
-            nextAlarm: "No Alarms Set",
-            alarmName: "",
+            nextAlarm: "",
+            alarmName: "No Alarms Set",
             alarmDetails: "",
         };
         this.currAlarm = new Alarm(undefined);
@@ -38,6 +38,7 @@ export default class LandingPage extends Component<{}, State> {
                            'August', 'September', 'October', 'November', 'December',];
         this.timer = 0;
         this.alarmTimer = 0;
+
         return;
     }
 
@@ -137,7 +138,8 @@ export default class LandingPage extends Component<{}, State> {
                 </View>
                 <View><Text style = {styles.clockInfo}> {this.state.currentTime} </Text></View>
                 <Text style = {styles.dateInfo}> {this.state.currentDay} </Text>
-                <View style = {styles.mainTimer}> 
+
+                <View style = {styles.emptyTimer}>
                     <Text style = {styles.alarmName}>{this.state.alarmName}  </Text>
                     <Text style = {styles.timerStatus}>{this.state.nextAlarm}  </Text>
                     <Text style = {styles.alarmDetails}>{this.state.alarmDetails}  </Text>
@@ -148,6 +150,7 @@ export default class LandingPage extends Component<{}, State> {
                         <View style = {styles.alarmTabButtons}><Button title = '>' color = "white" onPress={()=>{}}/></View>
                     </View>
                 </View>
+
                 <View style = {styles.buttonWrapper}>
                     <Button title = "Create Alarm" color="white" onPress={()=> this.onCreatePressed() }/>
                 </View>
@@ -158,7 +161,7 @@ export default class LandingPage extends Component<{}, State> {
                     <Button title = "Clear Timer" color="white" onPress={()=> this.removeTestAlarm()}></Button>
                 </View>
                 <View>
-                    <Text style = {styles.balance}>Current Balance: $0.00</Text>
+                    <Text style = {styles.balance}>You Owe: $0.00</Text>
                 </View>
             </View>
         )

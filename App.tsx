@@ -5,27 +5,6 @@ import AlarmPage from './src/AlarmPage';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-/*
-export type rootstackparamlist = {
-  home: { nalarm: alarm }; 
-  alarms: {};
-}
-
-type HomeScreenRouteProp = RouteProp<RootStackParamList, 'Home' >;
-
-type HomeScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
-  'Home'
->;
-
-const Stack = createStackNavigator<RootStackParamList>();
-
-export type RoutingProps = {
-  route: HomeScreenRouteProp;
-  navigation: HomeScreenNavigationProp;
-};
- */
-
 const Stack = createStackNavigator();
 const App = ()=> {
   return (
