@@ -6,7 +6,7 @@ An alarm app for iOS and Android that donates your money to charity if you fail 
 </div>
 
 ## Motivation 
-When I wake up I usually have a period of unproductivity in which I'm lounging around in bed, on my phone, and just generally in a very distracted mindset. This project is an attempt at improving the classic alarm clock to get your brain warmed up for productivepursuits as soon as you wake up, at the threat of financial loss. 
+When I wake up I usually have a period of unproductivity in which I'm lounging around in bed, on my phone, and just generally in a very distracted mindset. This project is an attempt at improving the classic alarm clock to get your brain warmed up for productive pursuits as soon as you wake up, at the threat of financial loss. 
 
 ## Installation
 - ``` npm i ```
